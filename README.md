@@ -6,7 +6,7 @@ Verilog port of CERN's [Colibri](https://gitlab.cern.ch/colibri/colibri) HDL lib
 
 ## Current Scope
 
-This repository is currently focused on porting the `src/memory` modules from the original VHDL library to SystemVerilog. This allows these components to be synthesized and simulated natively in open-source EDA toolchains like Yosys and Verilator.
+This repository is currently focused on porting the `src/memory` modules from the original VHDL library to Verilog/SystemVerilog. This allows these components to be synthesized and simulated natively in open-source EDA toolchains like Yosys and Verilator.
 
 **Modules:**
 * `rom.sv` — Read-Only Memory (synthesizes to BRAM, supports hex file initialization)
