@@ -33,13 +33,16 @@
 
 
 module rom#(
+    // Number of words to store
     parameter g_N_WORDS = 10,
+    // Word size in bits
     parameter g_DATA_WIDTH = 8,
+    // Initialization file path
     parameter g_INIT_FILE = ""
 )(
-    input clk_i,
-    input [$clog2(g_N_WORDS)-1:0] addr_i,
-    output reg [g_DATA_WIDTH-1:0] data_o
+    input                          clk_i,   // clock
+    input  [$clog2(g_N_WORDS)-1:0] addr_i,  // read address
+    output reg [g_DATA_WIDTH-1:0]  data_o   // data to read
 );
 
     reg [g_DATA_WIDTH-1:0] data[0:g_N_WORDS-1];
