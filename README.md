@@ -10,6 +10,7 @@ This repository is currently focused on porting the `src/memory` modules from th
 
 **Modules:**
 * `rom.sv` — Read-Only Memory (synthesizes to BRAM, supports hex file initialization)
+* `ram.v` — Random-Access Memory (supports configurable data/address widths and optional register stages)
 
 ## Attribution & License
 
