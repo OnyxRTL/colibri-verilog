@@ -50,7 +50,7 @@ module rom#(
     integer i;
 
     initial begin
-        for (i=0;i<g_N_WORDS;i=i+1) begin
+        for (i = 0; i < g_N_WORDS; i = i + 1) begin
             data[i] = {g_DATA_WIDTH{1'b0}};
         end
         if (g_INIT_FILE!="") begin

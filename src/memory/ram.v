@@ -56,7 +56,7 @@ module ram#(
     integer i;
 
     initial begin
-        for (i=0;i<g_N_WORDS;i=i+1) begin
+        for (i = 0; i < g_N_WORDS; i = i + 1) begin
             memory[i] = g_INIT_WORD;
         end
         if (g_INIT_FILE!="") begin
