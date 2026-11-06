@@ -98,7 +98,7 @@ module simple_dpram_altera#(
 
             assign wword = wrdata_i;
 
-            always @(posedge wrclk_i) begin
+            always @(posedge wrclk_i) begin: proc_write_ram_mux
                 if (wren_i) begin
                     memory[wraddr_i] <= wword;
                 end
@@ -106,7 +106,7 @@ module simple_dpram_altera#(
 
         end else begin:  gen_a_narrow
 
-            always @(posedge wrclk_i) begin
+            always @(posedge wrclk_i) begin: proc_write_ram_direct
                 if (wren_i) begin
                     memory[wraddr_i / c_PORT_RATIO]
                      [wraddr_i % c_PORT_RATIO] <= wrdata_i;
@@ -127,14 +127,14 @@ module simple_dpram_altera#(
                 read_b = rword;
             end
 
-            always @(posedge rdclk_i) begin
+            always @(posedge rdclk_i) begin: proc_read_ram_mux
                 if (rden_i) begin
                     rword <= memory[rdaddr_i];
                 end
             end
         end else begin: gen_b_narrow
 
-            always @(posedge rdclk_i) begin
+            always @(posedge rdclk_i) begin: proc_read_ram_direct
                 if (rden_i) begin
                     read_b <= memory[rdaddr_i / c_PORT_RATIO][rdaddr_i % c_PORT_RATIO];
                 end
