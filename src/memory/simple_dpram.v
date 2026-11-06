@@ -53,7 +53,7 @@ module simple_dpram#(
     // Initial value to fill the RAM with (in case no init. file is specified)
     parameter [g_A_DATA_WIDTH-1:0] g_INIT_WORD = {g_DATA_WIDTH{1'b0}},
     // implementation style, use VIVADO or QUARTUS to force a specific implementation
-    parameter g_IMPL_STYLE = `VIVADO,
+    parameter g_IMPL_STYLE = `VIVADO
 )(
     // Write port
     input                      wrclk_i,  // clock
@@ -62,10 +62,10 @@ module simple_dpram#(
     input [g_A_DATA_WIDTH-1:0] wrdata_i, // data input
 
     // Read port
-    input                           rdclk_i,    // clock
-    input                           rden_i,     // read-enable
-    input      [g_B_ADDR_WIDTH-1:0] rdaddr_i,   // Address
-    output reg [g_B_DATA_WIDTH-1:0] rddata_o    // data output
+    input                       rdclk_i,    // clock
+    input                       rden_i,     // read-enable
+    input  [g_B_ADDR_WIDTH-1:0] rdaddr_i,   // Address
+    output [g_B_DATA_WIDTH-1:0] rddata_o    // data output
 );
 
     generate

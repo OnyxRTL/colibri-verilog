@@ -6,12 +6,25 @@ Verilog port of CERN's [Colibri](https://gitlab.cern.ch/colibri/colibri) HDL lib
 
 ## Current Scope
 
-This repository is currently focused on porting the `src/memory` modules from the original VHDL library to Verilog/SystemVerilog. This allows these components to be synthesized and simulated natively in open-source EDA toolchains like Yosys and Verilator.
+This repository is currently focused on porting the `src/memory` modules from the original VHDL library to Verilog/SystemVerilog, so they can be synthesized and simulated in open-source EDA toolchains like Yosys and Verilator.
 
-**Modules:**
-* `rom.sv` — Read-Only Memory (synthesizes to BRAM, supports hex file initialization)
-* `ram.v` — Random-Access Memory (supports configurable data/address widths and optional register stages)
-* `simple_dpram_be.v` — Simple dual-port RAM with per-byte write enable (separate read/write clocks, synthesizes to BRAM)
+## Modules
+
+| File | Description |
+|---|---|
+| `rom.v` | Read-only memory, with hex file initialization |
+| `ram.v` | Single-port RAM with optional input/output registers and write-first/read-first mode |
+| `simple_dpram.v` | Simple dual-port RAM wrapper. Picks the Xilinx or Altera version with `g_IMPL_STYLE` (`` `VIVADO `` or `` `QUARTUS ``) |
+| `simple_dpram_xilinx.v` | Xilinx-style simple dual-port RAM, separate read/write clocks, optional mixed port widths |
+| `simple_dpram_altera.v` | Altera-style simple dual-port RAM, separate read/write clocks, optional mixed port widths |
+| `simple_dpram_be.v` | Simple dual-port RAM with per-byte write enable |
+
+## Notes
+
+- `simple_dpram.v` needs both `simple_dpram_xilinx.v` and `simple_dpram_altera.v` in the project.
+- `simple_dpram_xilinx.v` and `simple_dpram_altera.v` use SystemVerilog features (`$error`/`$info` in generate blocks, and packed arrays in the Altera one). Set your tool to SystemVerilog mode, or rename the files to `.sv`.
+- Memory init files are hex, one word per line. For the Xilinx version a word is the narrower port's width. For the Altera version a word is the full wider-port width.
+- These ports have not been fully verified against the original VHDL yet. Testbenches are still to be added.
 
 ## Attribution & License
 
