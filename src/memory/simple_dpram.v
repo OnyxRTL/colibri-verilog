@@ -78,7 +78,9 @@ module simple_dpram#(
                 .g_N_WORDS      (g_N_WORDS),
                 .g_A_ADDR_WIDTH (g_A_ADDR_WIDTH),
                 .g_B_ADDR_WIDTH (g_B_ADDR_WIDTH),
-                .g_REGISTER_OUT (g_REGISTER_OUT)
+                .g_REGISTER_OUT (g_REGISTER_OUT),
+                .g_INIT_FILE    (g_INIT_FILE),
+                .g_INIT_WORD    (g_INIT_WORD)
             ) simple_dpram_altera_inst (
                 .wrclk_i  (wrclk_i),
                 .wren_i   (wren_i),
