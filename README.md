@@ -10,7 +10,7 @@ This repository is currently focused on porting the `src/memory` modules from th
 
 ## Progress
 
-**colibri.memory:** `[█████░░░░░░░░] 5/13`
+**colibri.memory:** `[██████░░░░░░░] 6/13`
 
 ## Modules
 
@@ -25,6 +25,7 @@ This repository is currently focused on porting the `src/memory` modules from th
 | `true_dpram.v` | True dual-port RAM wrapper. Picks the Xilinx or Altera version with `g_IMPL_STYLE` (`` `VIVADO `` or `` `QUARTUS ``) |
 | `true_dpram_xilinx.v` | Xilinx-style true dual-port RAM, two independent read/write ports with separate clocks, optional mixed port widths and write-first/read-first mode |
 | `true_dpram_altera.v` | Altera-style true dual-port RAM, two independent read/write ports with separate clocks, optional mixed port widths |
+| `ring_buffer.sv` | RAM-based simple ring buffer (SystemVerilog) |
 
 ## Status
 
@@ -48,9 +49,9 @@ All 13 modules of the original `src/memory` directory:
 | `packet_fifo` | ❌ | ❌ |
 | `packet_cc_fifo` | ❌ | ❌ |
 | `packet_cc_ram_fifo` | ❌ | ❌ |
-| `ring_buffer` | ❌ | ❌ |
+| `ring_buffer` | ✅ | ❌ |
 
-Ported: 5/13. Tested: 1/13. The indented `↳` rows are implementation variants of the wrapper above them and are not counted separately.
+Ported: 6/13. Tested: 1/13. The indented `↳` rows are implementation variants of the wrapper above them and are not counted separately.
 
 `mem_pkg` (the VHDL helper package for memory initialization) is not ported as a module. Its job is covered by `$readmemh` and localparams inside each Verilog file.
 
